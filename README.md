@@ -1,5 +1,5 @@
 # Статус Workflow
-![example workflow](https://github.com/bogatovad/yamdb_final/actions/workflows/python-publish.yml/badge.svg)
+![example workflow](https://github.com/bogatovad/yamdb_final/actions/workflows/yamdb_workflow.yaml.yml/badge.svg)
 # api_yamdb
 api_yamdb
 ### Описание
