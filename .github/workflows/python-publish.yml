@@ -1,4 +1,4 @@
-name: Test PEP8
+name: Test api final
 
 on: [push]
 
@@ -19,8 +19,8 @@ jobs:
         pip install flake8 pytest
         pip install -r requirements.txt
 
-#     - name: Lint with flake8
-#       run: flake8 .
+    - name: Lint with flake8
+      run: flake8 .
       
     - name: Test with pytest
       run: pytest
@@ -70,4 +70,3 @@ jobs:
        to: ${{ secrets.TELEGRAM_TO }}
        token: ${{ secrets.TELEGRAM_TOKEN }}
        message: ${{ github.workflow }} успешно выполнен!
- 
