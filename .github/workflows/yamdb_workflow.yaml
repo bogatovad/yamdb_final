@@ -54,7 +54,7 @@ jobs:
        script: |
          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.NAME_REPOSITORY }}
          sudo docker stop $(sudo docker ps -a -q)
-         sudo docker-compose up         
+         ls -l         
 #   send_message:
 #    runs-on: ubuntu-latest
 #    needs: deploy
