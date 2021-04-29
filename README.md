@@ -1,5 +1,8 @@
 # Статус Workflow
 ![example workflow](https://github.com/bogatovad/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
+# Адрес сервера
+http://178.154.197.184/redoc/
+http://178.154.197.184/admin/
 # api_yamdb
 api_yamdb
 ### Описание
