@@ -70,6 +70,7 @@ jobs:
        key: ${{ secrets.SSH_KEY }}
        passphrase: ${{ secrets.PASSPHRASE }}
        script: |
+         cd final
          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.NAME_REPOSITORY }}
          sudo docker stop $(sudo docker ps -a -q)
          sudo docker-compose up -d
