@@ -72,7 +72,7 @@ jobs:
        script: |
          cd final
          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.NAME_REPOSITORY }}
-         sudo docker stop $(sudo docker ps -a -q)
+         sudo docker-compose stop
          sudo docker-compose up -d
 #   send_message:
 #    runs-on: ubuntu-latest
