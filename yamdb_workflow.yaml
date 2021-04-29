@@ -23,6 +23,7 @@ jobs:
 
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: tests
     steps:
@@ -44,6 +45,24 @@ jobs:
    runs-on: ubuntu-latest
    needs: build_and_push_to_docker_hub
    steps:
+   - name: Check out the repo
+     uses: actions/checkout@v2
+   - name: Add enviroment variables
+     run: |
+        echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+        echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+        echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+        echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+        echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
+   - name: Copy files
+     uses: appleboy/scp-action@master
+     with:
+       host: ${{ secrets.HOST }}
+       username: ${{ secrets.USER }}
+       key: ${{ secrets.SSH_KEY }}
+       passphrase: ${{ secrets.PASSPHRASE }}
+       source: ".env, docker-compose.yaml, nginx/default.conf"
+       target: "final"
    - name: executing remote ssh commands to deploy
      uses: appleboy/ssh-action@master
      with:
@@ -52,10 +71,10 @@ jobs:
        key: ${{ secrets.SSH_KEY }}
        passphrase: ${{ secrets.PASSPHRASE }}
        script: |
+         cd final
          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.NAME_REPOSITORY }}
-         sudo docker stop $(sudo docker ps -a -q)
-         sudo docker run --rm -d -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.NAME_REPOSITORY }}
-         
+         sudo docker-compose stop
+         sudo docker-compose up -d
   send_message:
    runs-on: ubuntu-latest
    needs: deploy
