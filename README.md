@@ -15,7 +15,7 @@ api_yamdb
 https://docs.docker.com/get-docker/
 ### Клонирование репозитория
 Затем склонируйте репозиторий к себе на компьютер, выполнив команду
-```git clone https://github.com/bogatovad/infra_sp2.git```
+```git clone https://github.com/bogatovad/yamdb_final.git```
 ### Команды для запуска приложения
 ```docker-compose up```
 ### Команду для создания суперпользователя
