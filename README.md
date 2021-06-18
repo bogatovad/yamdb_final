@@ -2,10 +2,6 @@
 ![example workflow](https://github.com/bogatovad/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
 # api_yamdb
 api_yamdb
-### Документация по api
-http://178.154.197.184/redoc/
-### Админка для базы данных
-http://178.154.197.184/admin/
 ### Описание
 API для проекта Yatube
 ### Технологии
